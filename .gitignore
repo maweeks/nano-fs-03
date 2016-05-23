@@ -63,4 +63,4 @@ target/
 
 .DS_Store
 .vagrant/
-*/gamecatalog.db
+vagrant/catalog/gamecatalog.db
