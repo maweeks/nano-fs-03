@@ -16,6 +16,16 @@ class User(Base):
 	email = Column(String(80), nullable = False)
 	picture = Column(String(80))
 
+    @property
+    def serialize(self):
+        """Return object data in easily serializeable format"""
+        return {
+            'id': self.id,
+            'name': self.name,
+            'email': self.email,
+            'picture': self.picture,
+        }
+
 
 class Developer(Base):
 	__tablename__ = 'developer'
@@ -26,6 +36,17 @@ class Developer(Base):
 	image = Column(String(80))
 	u_id = Column(Integer, ForeignKey('user.id'))
 	user = relationship(User)
+
+    @property
+    def serialize(self):
+        """Return object data in easily serializeable format"""
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.email,
+            'image': self.image,
+            'u_id': self.u_id,
+        }
 
 
 class Game(Base):
@@ -39,6 +60,18 @@ class Game(Base):
 	developer = relationship(Developer)
 	u_id = Column(Integer, ForeignKey('user.id'))
 	user = relationship(User)
+
+    @property
+    def serialize(self):
+        """Return object data in easily serializeable format"""
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.email,
+            'image': self.image,
+            'd_id': self.d_id,
+            'u_id': self.u_id,
+        }
 
 
 engine = create_engine('sqlite:///gamecatalog.db')
