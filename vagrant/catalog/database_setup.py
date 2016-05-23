@@ -9,12 +9,12 @@ from sqlalchemy import create_engine
 Base = declarative_base()
 
 class User(Base):
-	__tablename__ = 'user'
+    __tablename__ = 'user'
 
-	id = Column(Integer, primary_key = True)
-	name = Column(String(80), nullable = False)
-	email = Column(String(80), nullable = False)
-	picture = Column(String(80))
+    id = Column(Integer, primary_key = True)
+    name = Column(String(80), nullable = False)
+    email = Column(String(80), nullable = False)
+    picture = Column(String(80))
 
     @property
     def serialize(self):
@@ -28,14 +28,14 @@ class User(Base):
 
 
 class Developer(Base):
-	__tablename__ = 'developer'
+    __tablename__ = 'developer'
 
-	id = Column(Integer, primary_key = True)
-	name = Column(String(80), nullable = False)
-	description = Column(String(250))
-	image = Column(String(80))
-	u_id = Column(Integer, ForeignKey('user.id'))
-	user = relationship(User)
+    id = Column(Integer, primary_key = True)
+    name = Column(String(80), nullable = False)
+    description = Column(String(250))
+    image = Column(String(80))
+    u_id = Column(Integer, ForeignKey('user.id'))
+    user = relationship(User)
 
     @property
     def serialize(self):
@@ -43,23 +43,24 @@ class Developer(Base):
         return {
             'id': self.id,
             'name': self.name,
-            'description': self.email,
+            'description': self.description,
             'image': self.image,
             'u_id': self.u_id,
         }
 
 
 class Game(Base):
-	__tablename__ = 'game'
+    __tablename__ = 'game'
 
-	id = Column(Integer, primary_key = True)
-	name = Column(String(80), nullable = False)
-	description = Column(String(250))
-	image = Column(String(80))
-	d_id = Column(Integer, ForeignKey('developer.id'))
-	developer = relationship(Developer)
-	u_id = Column(Integer, ForeignKey('user.id'))
-	user = relationship(User)
+    id = Column(Integer, primary_key = True)
+    name = Column(String(80), nullable = False)
+    description = Column(String(250))
+    gameplay = Column(String(80))
+    image = Column(String(80))
+    d_id = Column(Integer, ForeignKey('developer.id'))
+    developer = relationship(Developer)
+    u_id = Column(Integer, ForeignKey('user.id'))
+    user = relationship(User)
 
     @property
     def serialize(self):
@@ -67,8 +68,9 @@ class Game(Base):
         return {
             'id': self.id,
             'name': self.name,
-            'description': self.email,
+            'description': self.description,
             'image': self.image,
+            'gameplay': self.gameplay,
             'd_id': self.d_id,
             'u_id': self.u_id,
         }
