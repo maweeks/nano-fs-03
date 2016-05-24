@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, jsonify, url_for, flash
-from sqlalchemy import create_engine, asc
+from sqlalchemy import create_engine, asc, desc
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, User, Developer, Game
 from flask import session as login_session
@@ -40,17 +40,14 @@ def gameJSON(developer_id, game_id):
     return jsonify(game=game.serialize)
 
 
-
-
 # HTML pages
 # Show all developers
 @app.route('/')
 @app.route('/index/')
 def showIndex():
-    return render_template('index.html', developers=developers)
-
-
-
+    developers = session.query(Developer).order_by(asc(Developer.name))
+    latest = session.query(Game).order_by(desc(Game.id)).limit(6)
+    return render_template('index.html', developers=developers, latest=latest)
 
 @app.route('/developers/')
 def showDevelopers():
@@ -59,7 +56,7 @@ def showDevelopers():
         # return render_template('publicdevelopers.html', developers=developers)
     # else:
         # return render_template('developers.html', developers=developers)
-    return "Developer."
+    return str(developers)
 
 # Login pages
 

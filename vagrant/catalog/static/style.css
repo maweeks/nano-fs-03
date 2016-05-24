@@ -1,0 +1,9 @@
+header {
+	background-color: cyan;
+}
+
+.tileImage {
+	border: 5px #333 solid;
+	margin: 15px 0;
+	max-width: 100%;
+}

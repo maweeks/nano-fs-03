@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8 col-sm-8 col-md-8">
+                        <a href="/"><h2 class="headerTitle">
+                            <!-- <img class="logo" src='' /> -->
+                            Games Catalog
+                        </h2></a>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 text-right headerLogin">
+                        {% include "header.html" %}
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class = 'flash'>
+                        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                {% for message in messages %}
+                    <li> <strong> {{ message }} </strong> </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% endwith %}
+        </div>
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <footer class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <hr>
+                    <p> &copy; Matt Weeks 2016 </p>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
