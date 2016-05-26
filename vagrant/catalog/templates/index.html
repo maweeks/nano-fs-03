@@ -1,17 +1,14 @@
 {% extends "main.html" %}
 {% block content %}
     <div class="row banner main">
-        <div class="col-md-12 padding-none">
-            <h1>Latest Games</h1>
-            {% for game in latest %}
-                <div class="col-md-4"><a href=""><img class="tileImage" src= {{ game.image }} /></a></div>
-            {% endfor %}
-        </div>
-        <div class="col-md-12 padding-none">
-            <h1><a href="/developers/">Developers</a></h1>
-            {% for developer in developers %}
-                <div class="col-md-4"><a href=""><img class="tileImage" src= {{ developer.image }} /></a></div>
-            {% endfor %}
-        </div>
+        <div class="col-md-12 padding-none"><h1>Latest Games</h1></div>
+        {% with list = latest %}
+        {% include "tilelist.html" %}
+        {% endwith %}
+
+        <div class="col-md-12 padding-none"><a href="/developers/"><h1>Developers</h1></a></div>
+        {% with list = developers %}
+        {% include "tilelist.html" %}
+        {% endwith %}
     </div>
 {% endblock %}

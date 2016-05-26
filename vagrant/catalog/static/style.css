@@ -1,9 +1,52 @@
+a {
+	color: inherit;
+}
+
+a:hover {
+	color: #48C;
+	text-decoration: none;
+}
+
 header {
-	background-color: cyan;
+	background-color: #3598DB;
+}
+
+body {
+	color: #333;
+}
+
+.headerTitle {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.headerTitle:hover {
+	color: #333;
+}
+
+.tileBox {
+	border: 5px #333 solid;
+	margin: 15px 0;
+	padding-bottom: 56.25%;
+	width: 100%;
+}
+
+.tileBox>a>div {
+	padding: 0;
+	position: absolute;
+	margin: 20px;
+	top: 0; bottom: 0; left: 0; right: 0;
+	max-width: 100%;
+}
+
+.tileBox h2, .tileBox em {
+	padding-left: 10px;
+
 }
 
 .tileImage {
-	border: 5px #333 solid;
-	margin: 15px 0;
-	max-width: 100%;
+	min-height: 100%;
+	min-width: 100%;
+	margin: 0;
+	width: 100%;
 }

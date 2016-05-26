@@ -1,0 +1,10 @@
+{% for game in list %}
+    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12"><div class="tileBox"><a href=""><div>
+    {% if game.image %}
+        <img class="tileImage" src= {{ game.image }} />
+    {% else %}
+        <h2>{{ game.name }}</h2>
+        <em>(No image added to database.)</em>
+    {% endif %}
+    </div></a></div></div>
+{% endfor %}
