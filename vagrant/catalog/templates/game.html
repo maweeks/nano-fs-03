@@ -1,0 +1,30 @@
+{% extends "main.html" %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12 padding-none"><h1>{{ game.name }}</h1>
+        <h3>Developer</h3>
+        <em class="description">
+            <a href="/developer/{{ developer.id}}">{{ developer.name }}</a>
+        </em>
+        <h3>Description</h3>
+        <em class="description">
+            {% if game.description %}
+                {{ game.description }}
+            {% else %}
+                No description has been added.
+            {% endif %}
+        </em>
+        <h3>Screenshot</h3>
+        {% if game.gameplay %}
+            <img class="gameplay" src="{{ game.gameplay }}"/>
+        {% else %}
+            <em class="description">No screenshot has been added.</em>
+        {% endif %}
+    </div></div>
+    <div class="row">
+        <div class="col-md-12 padding-none"><h3>Other games by <a href="/developer/{{ developer.id}}">{{ developer.name }}</a></h3></div>
+        {% with list = othergames %}
+        {% include "tilelist.html" %}
+        {% endwith %}
+    </div>
+{% endblock %}

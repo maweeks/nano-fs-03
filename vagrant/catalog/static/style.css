@@ -12,7 +12,20 @@ header {
 }
 
 body {
+	background-color: #c5eff7;
 	color: #333;
+}
+
+.page {
+	background-color: #fff;
+}
+
+.description {
+	font-size: 14pt;
+}
+
+.gameplay {
+	max-width: 100%;
 }
 
 .headerTitle {
@@ -41,6 +54,7 @@ body {
 	margin: 20px;
 	top: 0; bottom: 0; left: 0; right: 0;
 	max-width: 100%;
+	overflow: hidden;
 }
 
 .tileBox h2, .tileBox em {

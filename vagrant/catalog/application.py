@@ -64,6 +64,22 @@ def showDevelopers():
     developers = session.query(Developer).order_by(asc(Developer.name))
     return render_template('developers.html', developers=developers)
 
+# Show single developer page
+@app.route('/developer/<int:developer_id>/')
+@app.route('/developer/<int:developer_id>/games/')
+def developer(developer_id):
+    developer = session.query(Developer).filter_by(id=developer_id).one()
+    games = session.query(Game).filter_by(d_id=developer_id).order_by(asc(Game.name)).all()
+    return render_template('developer.html', developer=developer, games=games)
+
+# Show a single game
+@app.route('/developer/<int:developer_id>/game/<int:game_id>/')
+def game(developer_id, game_id):
+    game = session.query(Game).filter_by(id=game_id).one()
+    developer = session.query(Developer).filter_by(id=developer_id).one()
+    othergames = session.query(Game).filter_by(d_id=developer_id).filter(Game.id!=game_id).order_by(asc(Game.name)).all()
+    return render_template('game.html', developer=developer, game=game, othergames=othergames)
+
 # Show all games
 @app.route('/games/')
 def showGames():
