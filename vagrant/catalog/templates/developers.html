@@ -1,0 +1,9 @@
+{% extends "main.html" %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12 padding-none"><h1>Developers</h1></div>
+        {% with list = developers %}
+        {% include "tilelist.html" %}
+        {% endwith %}
+    </div>
+{% endblock %}

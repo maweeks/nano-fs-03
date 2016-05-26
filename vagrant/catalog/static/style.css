@@ -3,7 +3,7 @@ a {
 }
 
 a:hover {
-	color: #48C;
+	color: #3598DB;
 	text-decoration: none;
 }
 
@@ -27,8 +27,12 @@ body {
 .tileBox {
 	border: 5px #333 solid;
 	margin: 15px 0;
-	padding-bottom: 56.25%;
+	padding-bottom: 55%;
 	width: 100%;
+}
+
+.tileBox:hover {
+	border-color: #3598DB;
 }
 
 .tileBox>a>div {

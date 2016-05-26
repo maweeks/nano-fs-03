@@ -52,11 +52,12 @@ def showIndex():
 @app.route('/developers/')
 def showDevelopers():
     developers = session.query(Developer).order_by(asc(Developer.name))
-    # if 'username' not in login_session:
-        # return render_template('publicdevelopers.html', developers=developers)
-    # else:
-        # return render_template('developers.html', developers=developers)
-    return str(developers)
+    return render_template('developers.html', developers=developers)
+
+@app.route('/games/')
+def showGames():
+    games = session.query(Game).order_by(asc(Game.name))
+    return render_template('games.html', games=games)
 
 # Login pages
 

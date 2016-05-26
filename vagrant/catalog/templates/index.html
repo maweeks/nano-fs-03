@@ -1,11 +1,12 @@
 {% extends "main.html" %}
 {% block content %}
-    <div class="row banner main">
-        <div class="col-md-12 padding-none"><h1>Latest Games</h1></div>
+    <div class="row">
+        <div class="col-md-12 padding-none"><a href="/games/"><h1>Latest Games</h1></a></div>
         {% with list = latest %}
         {% include "tilelist.html" %}
         {% endwith %}
-
+    </div>
+    <div class="row">
         <div class="col-md-12 padding-none"><a href="/developers/"><h1>Developers</h1></a></div>
         {% with list = developers %}
         {% include "tilelist.html" %}

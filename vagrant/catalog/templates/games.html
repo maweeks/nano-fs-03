@@ -1,0 +1,9 @@
+{% extends "main.html" %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12 padding-none"><h1>Games</h1></div>
+        {% with list = games %}
+        {% include "tilelist.html" %}
+        {% endwith %}
+    </div>
+{% endblock %}
