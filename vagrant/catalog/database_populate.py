@@ -16,10 +16,10 @@ dev = Developer(user=user, name="Codemasters Racing", image="http://www.virtualr
 	description="Codemasters Software Company Ltd., or Codemasters Birmingham or CodeMasters (earlier known as Code Masters) is a British video game developer and publisher founded by David Darling and his brother Richard in 1986. Headquartered in Southam, Warwickshire, Codemasters is one of the oldest British game studios, and in 2005 was named the top independent games developer by Develop magazine.")
 session.add(dev)
 session.add(Game(developer=dev, user=user, name="Dirt 2", image="http://data.1freewallpapers.com/detail/dirt-2.jpg"))
-session.add(Game(developer=dev, user=user, name="Dirt 3", image="https://wallpaperscraft.com/image/dirt_3_name_game_font_race_15814_1280x720.jpg"))
+session.add(Game(developer=dev, user=user, name="Dirt 3", image="https://images-eds-ssl.xboxlive.com/image?url=8Oaj9Ryq1G1_p3lLnXlsaZgGzAie6Mnu24_PawYuDYIoH77pJ.X5Z.MqQPibUVTcVL1T87i_j13iJ9H7UxHFvByzHAvxHaYwF8elVl9SxjL3bhHaavB28q1GP_VcMcxH3Uq2549AKyJHSeML5I4vmPA5aWy55I4xdMPDYbTleV1UUniRcl.DXZNGA1ba0eR7r9KcSWpuD_P6B3dPDteOkrylzgaAz2K9McO74cbav9s-&format=jpg"))
 session.add(Game(developer=dev, user=user, name="Dirt Rally", image="https://wholesgame.com/wp-content/uploads/Dirt-Rally-Wallpaper-22-04-16.jpg"))
 session.add(Game(developer=dev, user=user, name="Dirt Showdown", image="http://www.hdwallpapers.in/thumbs/dirt_showdown-t2.jpg"))
-session.add(Game(developer=dev, user=user, name="Grid 2", image="http://data.1freewallpapers.com/detail/grid-2-logo.jpg"))
+session.add(Game(developer=dev, user=user, name="Grid 2", image="https://www.thenerdfilter.com/wp-content/uploads/2013/06/grid_2_game-wide.jpg"))
 session.add(Game(developer=dev, user=user, name="Grid Autosport", image="https://i.ytimg.com/vi/L_dWL72e0XA/maxresdefault.jpg"))
 
 dev = Developer(user=user, name="Crytek", image="http://www.dsogaming.com/wp-content/uploads/2014/05/crytek-logo.jpg")
