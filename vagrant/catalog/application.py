@@ -50,7 +50,7 @@ def gamesJSON():
 
 
 # HTML pages
-# Show all developers
+# Show index (latest games and all developers)
 @app.route('/')
 @app.route('/index/')
 def showIndex():
@@ -58,11 +58,13 @@ def showIndex():
     latest = session.query(Game).order_by(desc(Game.id)).limit(6)
     return render_template('index.html', developers=developers, latest=latest)
 
+# Show all developers
 @app.route('/developers/')
 def showDevelopers():
     developers = session.query(Developer).order_by(asc(Developer.name))
     return render_template('developers.html', developers=developers)
 
+# Show all games
 @app.route('/games/')
 def showGames():
     games = session.query(Game).order_by(asc(Game.name))
