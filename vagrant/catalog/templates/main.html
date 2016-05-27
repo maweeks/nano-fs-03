@@ -20,17 +20,19 @@
                 </div>
             </div>
         </header>
-        <div class="flash">
-            {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <ul>
-                {% for message in messages %}
-                    <li> <strong> {{ message }} </strong> </li>
-                {% endfor %}
-                </ul>
-            {% endif %}
-            {% endwith %}
-        </div>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash">
+                <div class="container">
+                    <div class="text-center">
+                        {% for message in messages %}
+                            <h4> {{ message }} </h4>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% endwith %}
         <div class="container page">
             {% block content %}
             {% endblock %}

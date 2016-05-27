@@ -94,6 +94,7 @@ def createDeveloper():
         newDeveloper = Developer(name=request.form['name'], image=request.form['image'], description=request.form['description'], u_id=1)
         session.add(newDeveloper)
         session.commit()
+        flash('Developer Created Successfully: '+str(newDeveloper.name))
         return redirect("/developers/")
     else:
         return render_template('createDeveloper.html')
@@ -108,6 +109,7 @@ def editDeveloper(developer_id):
         developer.description = request.form['description']
         session.add(developer)
         session.commit()
+        flash('Developer Edited Successfully: '+str(developer.name))
         return redirect("/developer/"+str(developer.id)+"/")
     else:
         return render_template('editDeveloper.html', developer=developer)
@@ -122,6 +124,7 @@ def deleteDeveloper(developer_id):
         for game in games:
             session.delete(game)
         session.commit()
+        flash('Developer Deleted Successfully: '+str(developer.name))
         return redirect("/developers/")
     else:
         return render_template('deleteDeveloper.html', developer=developer)
@@ -133,6 +136,7 @@ def createGame(developer_id):
         newGame = Game(name=request.form['name'], image=request.form['image'], gameplay=request.form['gameplay'], description=request.form['description'], d_id=developer_id, u_id=1)
         session.add(newGame)
         session.commit()
+        flash('Game Created Successfully: '+str(newGame.name))
         return redirect("/developer/"+str(developer_id))
     else:
         return render_template('createGame.html', developer_id=developer_id)
@@ -148,6 +152,7 @@ def editGame(developer_id, game_id):
         game.description = request.form['description']
         session.add(game)
         session.commit()
+        flash('Game Edited Successfully: '+str(game.name))
         return redirect("/developer/"+str(game.d_id)+"/game/"+str(game.id)+"/")
     else:
         return render_template('editGame.html', developer_id=game.d_id, game=game)
@@ -159,6 +164,7 @@ def deleteGame(developer_id, game_id):
     if request.method == 'POST':
         session.delete(game)
         session.commit()
+        flash('Game Deleted Successfully: '+str(game.name))
         return redirect("/developer/"+str(game.d_id))
     else:
         return render_template('deleteGame.html', game=game)
@@ -169,5 +175,6 @@ def page_not_found(e):
     return render_template('404.html'), 404
 
 if __name__ == '__main__':
+    app.secret_key = "ajsdlfkajfdsjiofad"
     app.debug = True
     app.run(host='0.0.0.0', port=5000)
