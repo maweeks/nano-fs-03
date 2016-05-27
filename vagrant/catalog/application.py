@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, jsonify, url_for, flash
+from flask import Flask, render_template, request, redirect, jsonify, flash
 from sqlalchemy import create_engine, asc, desc
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, User, Developer, Game
@@ -76,8 +76,8 @@ def developer(developer_id):
 @app.route('/developer/<int:developer_id>/game/<int:game_id>/')
 def game(developer_id, game_id):
     game = session.query(Game).filter_by(id=game_id).one()
-    developer = session.query(Developer).filter_by(id=developer_id).one()
-    othergames = session.query(Game).filter_by(d_id=developer_id).filter(Game.id!=game_id).order_by(asc(Game.name)).all()
+    developer = session.query(Developer).filter_by(id=game.d_id).one()
+    othergames = session.query(Game).filter_by(d_id=game.d_id).filter(Game.id!=game_id).order_by(asc(Game.name)).all()
     return render_template('game.html', developer=developer, game=game, othergames=othergames)
 
 # Show all games
@@ -88,35 +88,80 @@ def showGames():
 
 # DB manipulation pages
 # Create developer
-@app.route('/developer/create')
-@app.route('/developers/create')
+@app.route('/developer/create', methods=['GET', 'POST'])
 def createDeveloper():
-    return "Create developer."
+    if request.method == 'POST':
+        newDeveloper = Developer(name=request.form['name'], image=request.form['image'], description=request.form['description'], u_id=1)
+        session.add(newDeveloper)
+        session.commit()
+        return redirect("/developers/")
+    else:
+        return render_template('createDeveloper.html')
 
 # Edit developer
-@app.route('/developer/<int:developer_id>/edit')
+@app.route('/developer/<int:developer_id>/edit', methods=['GET', 'POST'])
 def editDeveloper(developer_id):
-    return "Edit developer: " + str(developer_id)
+    developer = session.query(Developer).filter_by(id=developer_id).one()
+    if request.method == 'POST':
+        developer.name = request.form['name']
+        developer.image = request.form['image']
+        developer.description = request.form['description']
+        session.add(developer)
+        session.commit()
+        return redirect("/developer/"+str(developer.id)+"/")
+    else:
+        return render_template('editDeveloper.html', developer=developer)
 
-# Delete developer
-@app.route('/developer/<int:developer_id>/delete')
+# Delete developer and all their games
+@app.route('/developer/<int:developer_id>/delete', methods=['GET', 'POST'])
 def deleteDeveloper(developer_id):
-    return "Delete developer: " + str(developer_id)
+    developer = session.query(Developer).filter_by(id=developer_id).one()
+    if request.method == 'POST':
+        session.delete(developer)
+        games = session.query(Game).filter_by(d_id=developer_id).all()
+        for game in games:
+            session.delete(game)
+        session.commit()
+        return redirect("/developers/")
+    else:
+        return render_template('deleteDeveloper.html', developer=developer)
 
 # Create game
-@app.route('/developer/<int:developer_id>/game/create')
+@app.route('/developer/<int:developer_id>/game/create', methods=['GET', 'POST'])
 def createGame(developer_id):
-    return "Create game for: " + str(developer_id)
+    if request.method == 'POST':
+        newGame = Game(name=request.form['name'], image=request.form['image'], gameplay=request.form['gameplay'], description=request.form['description'], d_id=developer_id, u_id=1)
+        session.add(newGame)
+        session.commit()
+        return redirect("/developer/"+str(developer_id))
+    else:
+        return render_template('createGame.html', developer_id=developer_id)
 
 # Edit game
-@app.route('/developer/<int:developer_id>/game/<int:game_id>/edit')
+@app.route('/developer/<int:developer_id>/game/<int:game_id>/edit', methods=['GET', 'POST'])
 def editGame(developer_id, game_id):
-    return "Edit game: " + str(game_id)
+    game = session.query(Game).filter_by(id=game_id).one()
+    if request.method == 'POST':
+        game.name = request.form['name']
+        game.image = request.form['image']
+        game.gameplay = request.form['gameplay']
+        game.description = request.form['description']
+        session.add(game)
+        session.commit()
+        return redirect("/developer/"+str(game.d_id)+"/game/"+str(game.id)+"/")
+    else:
+        return render_template('editGame.html', developer_id=game.d_id, game=game)
 
 # Delete game
-@app.route('/developer/<int:developer_id>/game/<int:game_id>/delete')
+@app.route('/developer/<int:developer_id>/game/<int:game_id>/delete', methods=['GET', 'POST'])
 def deleteGame(developer_id, game_id):
-    return "Delete game: " + str(game_id)
+    game = session.query(Game).filter_by(id=game_id).one()
+    if request.method == 'POST':
+        session.delete(game)
+        session.commit()
+        return redirect("/developer/"+str(game.d_id))
+    else:
+        return render_template('deleteGame.html', game=game)
 
 # Custom error page
 @app.errorhandler(404)

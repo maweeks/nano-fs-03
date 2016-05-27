@@ -1,0 +1,37 @@
+{% extends "main.html" %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12 padding-none">
+            <h1>Edit Developer</h1>
+        </div>
+        <div class="col-md-8 col-sm-12 col-md-offset-2 col-sm-offset-0 padding-none">
+            </br></br>
+            <form class="form-horizontal" method = "post">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputEmail3" name="name" placeholder="Name" value="{{developer.name}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="imageLink" class="col-sm-2 control-label">Image</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="imageLink" name="image" placeholder="Link to header image" value="{% if developer.image %}{{developer.image}}{% endif %}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="description" class="col-sm-2 control-label">Description</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control max100" rows="3" name="description">{% if developer.description %}{{developer.description}}{% endif %}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="button" name="cancel" value="cancel" onclick="window.location.href='/developer/{{developer.id}}/'" class="btn btn-secondary">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

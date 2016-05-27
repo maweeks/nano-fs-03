@@ -1,0 +1,20 @@
+{% extends "main.html" %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12 padding-none">
+            <h1>Delete Game</h1>
+        </div>
+        <div class="col-md-8 col-sm-12 col-md-offset-2 col-sm-offset-0 padding-none">
+            </br></br>
+            <form class="form-horizontal" method="post">
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-8 text-center">
+                        <h3>Are you sure you want to delete {{ game.name }}?</h3><br/>
+                        <button type="button" name="cancel" value="cancel" onclick="window.location.href='/developer/{{game.d_id}}/game/{{game.id}}'" class="btn btn-secondary">Cancel</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

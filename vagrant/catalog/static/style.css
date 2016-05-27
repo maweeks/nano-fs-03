@@ -56,6 +56,10 @@ body {
 	color: #333;
 }
 
+.max100 {
+	max-width: 100%;
+}
+
 .tileBox {
 	border: 5px #333 solid;
 	margin: 15px 0;
