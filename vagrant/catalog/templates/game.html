@@ -1,7 +1,18 @@
 {% extends "main.html" %}
 {% block content %}
     <div class="row">
-        <div class="col-md-12 padding-none"><h1>{{ game.name }}</h1>
+        <div class="col-md-12 padding-none">
+        <h1 class="inlineHeading">{{ game.name }}</h1>
+        <div class="headingButtons">
+            <button onclick="window.location.href='/developer/{{developer.id}}/game/{{game.id}}/edit'" class="btn-lg btn-primary edButton">Edit</button>
+            <button onclick="window.location.href='/developer/{{developer.id}}/game/{{game.id}}/delete'" class="btn-lg btn-danger edButton">Delete</button>
+        </div>
+        </div>
+        <div class="col-md-12 padding-none clear">
+
+
+
+
         <h3>Developer</h3>
         <em class="description">
             <a href="/developer/{{ developer.id}}">{{ developer.name }}</a>

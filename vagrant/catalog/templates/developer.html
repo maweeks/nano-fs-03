@@ -1,20 +1,34 @@
 {% extends "main.html" %}
 {% block content %}
     <div class="row">
-        <div class="col-md-12 padding-none"><h1>{{ developer.name }}</h1>
-        <h3>Description</h3>
-        <em class="description">
-            {% if developer.description %}
-                {{ developer.description }}
-            {% else %}
-                No description has been added.
-            {% endif %}
-        </em>
+        <div class="col-md-12 padding-none">
+        <h1 class="inlineHeading">{{ developer.name }}</h1>
+        <div class="headingButtons">
+            <button onclick="window.location.href='/developer/{{developer.id}}/edit'" class="btn-lg btn-primary edButton">Edit</button>
+            <button onclick="window.location.href='/developer/{{developer.id}}/delete'" class="btn-lg btn-danger edButton">Delete</button>
+        </div>
+        </div>
+        <div class="col-md-12 padding-none clear">
+            <h3>Description</h3>
+            <em class="description">
+                {% if developer.description %}
+                    {{ developer.description }}
+                {% else %}
+                    No description has been added.
+                {% endif %}
+            </em>
     </div></div>
     <div class="row">
-        <div class="col-md-12 padding-none"><h3>Games</h3></div>
-        {% with list = games %}
-        {% include "tilelist.html" %}
-        {% endwith %}
+        <div class="col-md-12 padding-none">
+            <h1 class="inlineHeading">Games</h1>
+            <div class="headingButtons">
+                <button onclick="window.location.href='/developer/{{developer.id}}/game/create'" class="btn-lg btn-success addButton">Add Game</button>
+            </div>
+        </div>
+        <div class="padding-none clear">
+            {% with list = games %}
+            {% include "tilelist.html" %}
+            {% endwith %}
+        </div>
     </div>
 {% endblock %}

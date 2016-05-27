@@ -66,7 +66,7 @@ def showDevelopers():
 
 # Show single developer page
 @app.route('/developer/<int:developer_id>/')
-@app.route('/developer/<int:developer_id>/games/')
+@app.route('/developer/<int:developer_id>/games')
 def developer(developer_id):
     developer = session.query(Developer).filter_by(id=developer_id).one()
     games = session.query(Game).filter_by(d_id=developer_id).order_by(asc(Game.name)).all()
@@ -86,8 +86,37 @@ def showGames():
     games = session.query(Game).order_by(asc(Game.name))
     return render_template('games.html', games=games)
 
-# Login pages
+# DB manipulation pages
+# Create developer
+@app.route('/developer/create')
+@app.route('/developers/create')
+def createDeveloper():
+    return "Create developer."
 
+# Edit developer
+@app.route('/developer/<int:developer_id>/edit')
+def editDeveloper(developer_id):
+    return "Edit developer: " + str(developer_id)
+
+# Delete developer
+@app.route('/developer/<int:developer_id>/delete')
+def deleteDeveloper(developer_id):
+    return "Delete developer: " + str(developer_id)
+
+# Create game
+@app.route('/developer/<int:developer_id>/game/create')
+def createGame(developer_id):
+    return "Create game for: " + str(developer_id)
+
+# Edit game
+@app.route('/developer/<int:developer_id>/game/<int:game_id>/edit')
+def editGame(developer_id, game_id):
+    return "Edit game: " + str(game_id)
+
+# Delete game
+@app.route('/developer/<int:developer_id>/game/<int:game_id>/delete')
+def deleteGame(developer_id, game_id):
+    return "Delete game: " + str(game_id)
 
 # Custom error page
 @app.errorhandler(404)

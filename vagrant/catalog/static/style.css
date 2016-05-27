@@ -12,8 +12,27 @@ header {
 }
 
 body {
-	background-color: #c5eff7;
+	background-color: #e4f1fe;
 	color: #333;
+}
+
+.addButton {
+	margin-bottom: 6px;
+	margin-top: 16px;
+}
+.inlineHeading {
+	display: inline-block;
+}
+.headingButtons {
+	display: inline;
+	float: right;
+}
+.clear{
+	clear:both;
+}
+.edButton {
+	margin-bottom: 6px;
+	margin-top: 16px;
 }
 
 .page {
