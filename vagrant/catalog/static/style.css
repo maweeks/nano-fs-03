@@ -1,96 +1,106 @@
 a {
-	color: inherit;
+    color: inherit;
 }
 
 a:hover {
-	color: #3598DB;
-	text-decoration: none;
-}
-
-header {
-	background-color: #3598DB;
+    color: #3598DB;
+    text-decoration: none;
 }
 
 body {
-	background-color: #cce5f6;
-	color: #333;
-}
-.flash {
-	background-color: #5cb85c;
-	padding: 10px;
-}
-.addButton {
-	margin-bottom: 6px;
-	margin-top: 16px;
-}
-.inlineHeading {
-	display: inline-block;
-}
-.headingButtons {
-	display: inline;
-	float: right;
-}
-.clear{
-	clear:both;
-}
-.edButton {
-	margin-bottom: 6px;
-	margin-top: 16px;
+    background-color: #cce5f6;
+    color: #333;
 }
 
-.page {
-	background-color: #fff;
+header {
+    background-color: #3598DB;
+}
+
+.addButton {
+    margin-bottom: 6px;
+    margin-top: 16px;
+}
+
+.clear{
+    clear:both;
 }
 
 .description {
-	font-size: 14pt;
+    font-size: 14pt;
+}
+
+.edButton {
+    margin-bottom: 6px;
+    margin-top: 16px;
+}
+
+.flash {
+    background-color: #5cb85c;
+    padding: 10px;
 }
 
 .gameplay {
-	max-width: 100%;
+    max-width: 100%;
+}
+
+.headerButton {
+    margin-top: 10px;
 }
 
 .headerTitle {
-	margin-top: 10px;
-	margin-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .headerTitle:hover {
-	color: #333;
+    color: #333;
+}
+
+.headingButtons {
+    display: inline;
+    float: right;
+}
+
+.inlineHeading {
+    display: inline-block;
 }
 
 .max100 {
-	max-width: 100%;
+    max-width: 100%;
+}
+
+.page {
+    background-color: #fff;
 }
 
 .tileBox {
-	border: 5px #333 solid;
-	margin: 15px 0;
-	padding-bottom: 55%;
-	width: 100%;
+    border: 5px #333 solid;
+    margin: 15px 0;
+    padding-bottom: 55%;
+    width: 100%;
 }
 
 .tileBox:hover {
-	border-color: #3598DB;
+    border-color: #3598DB;
 }
 
 .tileBox>a>div {
-	padding: 0;
-	position: absolute;
-	margin: 20px;
-	top: 0; bottom: 0; left: 0; right: 0;
-	max-width: 100%;
-	overflow: hidden;
+    padding: 0;
+    position: absolute;
+    margin: 20px;
+    top: 0; bottom: 0; left: 0; right: 0;
+    max-width: 100%;
+    overflow: hidden;
 }
 
 .tileBox h2, .tileBox em {
-	padding-left: 10px;
+    padding-left: 10px;
 
 }
 
 .tileImage {
-	min-height: 100%;
-	min-width: 100%;
-	margin: 0;
-	width: 100%;
+    min-height: 100%;
+    min-width: 100%;
+    margin: 0;
+    width: 100%;
 }

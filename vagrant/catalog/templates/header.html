@@ -1,1 +1,5 @@
-[login stuffs]
+{% if visibility %}
+<button class="headerButton btn-md btn-secondary" onclick="window.location.href='/gdisconnect'">Logout</button>
+{% else %}
+<button class="headerButton btn-md btn-success" onclick="window.location.href='/login'">Login</button>
+{% endif %}

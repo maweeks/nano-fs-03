@@ -9,7 +9,7 @@ session = DBSession()
 
 # Add user
 # user = User(name="Matt Weeks", email="matt.weeks93@gmail.com")
-user = User(name="Mtt Wks", email="mtt.wks93@gmail.com")
+user = User(name="Matt Weeks", email="mtt.weeks93@gmail.com", picture="https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg")
 session.add(user)
 
 # Add Developers and games

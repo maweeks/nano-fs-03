@@ -3,10 +3,12 @@
     <div class="row">
         <div class="col-md-12 padding-none">
         <h1 class="inlineHeading">{{ game.name }}</h1>
+        {% if visibility==game.u_id %}
         <div class="headingButtons">
             <button onclick="window.location.href='/developer/{{developer.id}}/game/{{game.id}}/edit'" class="btn-lg btn-primary edButton">Edit</button>
             <button onclick="window.location.href='/developer/{{developer.id}}/game/{{game.id}}/delete'" class="btn-lg btn-danger edButton">Delete</button>
         </div>
+        {% endif %}
         </div>
         <div class="col-md-12 padding-none clear">
 

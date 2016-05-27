@@ -3,9 +3,11 @@
     <div class="row">
         <div class="col-md-12 padding-none">
             <h1 class="inlineHeading">Developers</h1>
-            <div class="headingButtons">
-                <button onclick="window.location.href='/developer/create'" class="btn-lg btn-success addButton">Add Developer</button>
-            </div>
+            {% if visibility %}
+                <div class="headingButtons">
+                    <button onclick="window.location.href='/developer/create'" class="btn-lg btn-success addButton">Add Developer</button>
+                </div>
+            {% endif %}
         </div>
         <div class="padding-none clear">
             {% with list = developers %}
